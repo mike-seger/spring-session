@@ -43,4 +43,5 @@ Spring Session is Open Source software released under the https://www.apache.org
 
 == Links
 
-https://docs.spring.io/spring-session/docs/current-SNAPSHOT/reference/html5/guides/boot-webflux-custom-cookie.html#webflux-custom-cookie-sample
+https://docs.spring.io/spring-session/docs/current-SNAPSHOT/reference/html5/guides/boot-webflux-custom-cookie.html#webflux-custom-cookie-sample  
+(running redis: `redis-server /usr/local/etc/redis.conf`)
