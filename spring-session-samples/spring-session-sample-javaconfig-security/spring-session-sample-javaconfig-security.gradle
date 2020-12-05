@@ -1,7 +1,7 @@
 apply plugin: 'io.spring.convention.spring-sample-war'
 
 dependencies {
-	compile project(':spring-session-data-redis')
+	compile "org.springframework.session:spring-session-data-redis:2.4.1"
 	compile "org.springframework:spring-web"
 	compile "org.springframework.security:spring-security-config"
 	compile "org.springframework.security:spring-security-web"

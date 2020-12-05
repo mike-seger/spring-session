@@ -1,10 +1,10 @@
 apply plugin: 'io.spring.convention.spring-sample-boot'
 
 dependencies {
-	compile project(':spring-session-data-redis')
+//	compile "org.springframework.session:spring-session-data-redis:2.4.1"
 	compile "org.springframework.boot:spring-boot-starter-webflux"
 	compile "org.springframework.boot:spring-boot-starter-thymeleaf"
-	compile "org.springframework.boot:spring-boot-starter-data-redis"
+//	compile "org.springframework.boot:spring-boot-starter-data-redis"
 	compile "org.springframework.boot:spring-boot-devtools"
 	compile 'org.webjars:bootstrap'
 
@@ -12,6 +12,6 @@ dependencies {
 	testCompile "org.junit.jupiter:junit-jupiter-api"
 	testRuntime "org.junit.jupiter:junit-jupiter-engine"
 
-	integrationTestCompile seleniumDependencies
-	integrationTestCompile "org.testcontainers:testcontainers"
+//	integrationTestCompile seleniumDependencies
+//	integrationTestCompile "org.testcontainers:testcontainers"
 }

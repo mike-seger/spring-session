@@ -3,7 +3,7 @@ apply plugin: 'io.spring.convention.spring-sample-boot'
 ext['spring-data-bom.version'] = '2020.0.0'
 
 dependencies {
-	compile project(':spring-session-data-redis')
+	compile "org.springframework.session:spring-session-data-redis:2.4.1"
 	compile "org.springframework.boot:spring-boot-starter-webflux"
 	compile "org.springframework.boot:spring-boot-starter-thymeleaf"
 	compile "org.springframework.boot:spring-boot-starter-data-redis"
