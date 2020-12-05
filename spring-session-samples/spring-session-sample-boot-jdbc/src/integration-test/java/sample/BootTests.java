@@ -69,7 +69,7 @@ class BootTests {
 		LoginPage login = HomePage.go(this.driver);
 		HomePage home = login.form().login(HomePage.class);
 		home.containCookie("SESSION");
-		home.doesNotContainCookie("JSESSIONID");
+		home.doesNotContainCookie("CSESSION");
 	}
 
 	@Test

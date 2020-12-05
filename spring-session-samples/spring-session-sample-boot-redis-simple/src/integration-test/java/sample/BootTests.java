@@ -70,7 +70,7 @@ class BootTests {
 		HomePage home = login.form().login(HomePage.class);
 		home.assertAt();
 		home.containCookie("SESSION");
-		home.doesNotContainCookie("JSESSIONID");
+		home.doesNotContainCookie("CSESSION");
 	}
 
 	@Test

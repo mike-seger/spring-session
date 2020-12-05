@@ -114,7 +114,7 @@ class DefaultCookieSerializerTests {
 	@ValueSource(booleans = { true, false })
 	void readCookieValuesMultiCustomSessionCookieName(boolean useBase64Encoding) {
 		this.serializer.setUseBase64Encoding(useBase64Encoding);
-		setCookieName("JSESSIONID");
+		setCookieName("CSESSION");
 		String secondSession = "secondSessionId";
 		this.request.setCookies(createCookie(this.cookieName, this.sessionId, useBase64Encoding),
 				createCookie(this.cookieName, secondSession, useBase64Encoding));
@@ -242,7 +242,7 @@ class DefaultCookieSerializerTests {
 
 	@Test
 	void writeCookieCookieNameCustom() {
-		String cookieName = "JSESSIONID";
+		String cookieName = "CSESSION";
 		setCookieName(cookieName);
 		this.serializer.writeCookieValue(cookieValue(this.sessionId));
 		assertThat(getCookie().getName()).isEqualTo(cookieName);

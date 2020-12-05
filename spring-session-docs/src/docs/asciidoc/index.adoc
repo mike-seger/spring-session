@@ -1257,7 +1257,7 @@ The following example shows how to do so:
 include::{samples-dir}spring-session-sample-javaconfig-custom-cookie/src/main/java/sample/Config.java[tags=cookie-serializer]
 ----
 
-<1> We customize the name of the cookie to be `JSESSIONID`.
+<1> We customize the name of the cookie to be `CSESSION`.
 <2> We customize the path of the cookie to be `/` (rather than the default of the context root).
 <3> We customize the domain name pattern (a regular expression) to be `^.+?\\.(\\w+\\.[a-z]+)$`.
 This allows sharing a session across domains and applications.

@@ -54,7 +54,7 @@ class HazelcastSpringTests {
 		login.assertAt();
 		HomePage home = login.form().login(HomePage.class);
 		home.containCookie("SESSION");
-		home.doesNotContainCookie("JSESSIONID");
+		home.doesNotContainCookie("CSESSION");
 	}
 
 }

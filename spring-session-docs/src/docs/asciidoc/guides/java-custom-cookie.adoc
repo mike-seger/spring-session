@@ -27,7 +27,7 @@ The following example shows how to customize Spring Session's cookie:
 include::{samples-dir}spring-session-sample-javaconfig-custom-cookie/src/main/java/sample/Config.java[tags=cookie-serializer]
 ----
 
-<1> We customize the name of the cookie to be `JSESSIONID`.
+<1> We customize the name of the cookie to be `CSESSION`.
 <2> We customize the path of the cookie to be `/` (rather than the default of the context root).
 <3> We customize the domain name pattern (a regular expression) to be `^.+?\\.(\\w+\\.[a-z]+)$`.
 This allows sharing a session across domains and applications.
@@ -103,4 +103,4 @@ Now you can use the application. Fill out the form with the following informatio
 Now click the *Set Attribute* button.
 You should now see the values displayed in the table.
 
-If you look at the cookies for the application, you can see the cookie is saved to the custom name of `JSESSIONID`.
+If you look at the cookies for the application, you can see the cookie is saved to the custom name of `CSESSION`.

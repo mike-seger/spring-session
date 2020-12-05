@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 		<h1>Description</h1>
-		<p>This application demonstrates how to use a relational database to back your session. Notice that there is no JSESSIONID cookie. We are also able to customize the way of identifying what the requested session id is.</p>
+		<p>This application demonstrates how to use a relational database to back your session. Notice that there is no CSESSION cookie. We are also able to customize the way of identifying what the requested session id is.</p>
 
 		<h1>Try it</h1>
 

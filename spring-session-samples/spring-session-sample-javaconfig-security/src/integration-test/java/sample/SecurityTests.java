@@ -64,7 +64,7 @@ class SecurityTests {
 		assertThat(username.getText()).isEqualTo("user");
 		Set<Cookie> cookies = homePage.getDriver().manage().getCookies();
 		assertThat(cookies).extracting("name").contains("SESSION");
-		assertThat(cookies).extracting("name").doesNotContain("JSESSIONID");
+		assertThat(cookies).extracting("name").doesNotContain("CSESSION");
 	}
 
 	@Test

@@ -84,7 +84,7 @@ class HttpRedisJsonTest {
 		LoginPage login = HomePage.go(this.driver, LoginPage.class);
 		HomePage home = login.form().login(HomePage.class);
 		home.containCookie("SESSION");
-		home.doesNotContainCookie("JSESSIONID");
+		home.doesNotContainCookie("CSESSION");
 	}
 
 	@Test

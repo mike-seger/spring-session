@@ -36,7 +36,7 @@ public class Config {
 	@Bean
 	public CookieSerializer cookieSerializer() {
 		DefaultCookieSerializer serializer = new DefaultCookieSerializer();
-		serializer.setCookieName("JSESSIONID"); // <1>
+		serializer.setCookieName("CSESSION"); // <1>
 		serializer.setCookiePath("/"); // <2>
 		serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$"); // <3>
 		return serializer;
