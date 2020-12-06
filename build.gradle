@@ -27,7 +27,7 @@ buildscript {
 	}
 }
 
-apply plugin: 'io.spring.convention.root'
+//apply plugin: 'io.spring.convention.root'
 
 group = 'org.springframework.session'
 description = 'Spring Session'
