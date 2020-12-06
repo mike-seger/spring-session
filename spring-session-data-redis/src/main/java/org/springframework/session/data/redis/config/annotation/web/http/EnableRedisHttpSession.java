@@ -15,7 +15,7 @@ import java.lang.annotation.*;
 @Configuration(proxyBeanMethods = false)
 public @interface EnableRedisHttpSession {
 	int maxInactiveIntervalInSeconds() default MapSession.DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS;
-	String redisNamespace() default "spring:session";//RedisIndexedSessionRepository.DEFAULT_NAMESPACE;
+	String redisNamespace() default "spring:session";
 	FlushMode flushMode() default FlushMode.ON_SAVE;
 	String cleanupCron() default RedisHttpSessionConfiguration.DEFAULT_CLEANUP_CRON;
 	SaveMode saveMode() default SaveMode.ON_SET_ATTRIBUTE;

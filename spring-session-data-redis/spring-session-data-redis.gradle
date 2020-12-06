@@ -1,14 +1,8 @@
 apply plugin: 'io.spring.convention.spring-module'
 
-description = "Spring Session Redis implementation"
+description = "Spring Session in-memory implementation"
 
 dependencies {
-//	compile project(':spring-session-core')
+    compile "org.springframework:spring-context"
     compile "org.springframework.session:spring-session-core:2.4.1"
-	compile ("org.springframework.data:spring-data-redis") {
-		exclude group: "org.slf4j", module: 'jcl-over-slf4j'
-	}
-
-	optional "io.projectreactor:reactor-core"
-	optional "org.springframework:spring-web"
 }
