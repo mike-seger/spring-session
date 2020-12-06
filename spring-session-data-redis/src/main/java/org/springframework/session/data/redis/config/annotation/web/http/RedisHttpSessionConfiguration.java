@@ -55,8 +55,8 @@ import org.springframework.session.*;
 import org.springframework.session.config.SessionRepositoryCustomizer;
 import org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration;
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
-import org.springframework.session.data.redis.config.ConfigureNotifyKeyspaceEventsAction;
-import org.springframework.session.data.redis.config.ConfigureRedisAction;
+//import org.springframework.session.data.redis.config.ConfigureNotifyKeyspaceEventsAction;
+//import org.springframework.session.data.redis.config.ConfigureRedisAction;
 //import org.springframework.session.data.redis.config.annotation.SpringSessionRedisConnectionFactory;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 import org.springframework.util.Assert;
@@ -91,7 +91,7 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 
 	private String cleanupCron = DEFAULT_CLEANUP_CRON;
 
-	private ConfigureRedisAction configureRedisAction = new ConfigureNotifyKeyspaceEventsAction();
+//	private ConfigureRedisAction configureRedisAction = new ConfigureNotifyKeyspaceEventsAction();
 
 	private RedisConnectionFactory redisConnectionFactory;
 
@@ -191,15 +191,15 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 		this.cleanupCron = cleanupCron;
 	}
 
-	/**
-	 * Sets the action to perform for configuring Redis.
-	 * @param configureRedisAction the configureRedis to set. The default is
-	 * {@link ConfigureNotifyKeyspaceEventsAction}.
-	 */
-	@Autowired(required = false)
-	public void setConfigureRedisAction(ConfigureRedisAction configureRedisAction) {
-		this.configureRedisAction = configureRedisAction;
-	}
+//	/**
+//	 * Sets the action to perform for configuring Redis.
+//	 * @param configureRedisAction the configureRedis to set. The default is
+//	 * {@link ConfigureNotifyKeyspaceEventsAction}.
+//	 */
+//	@Autowired(required = false)
+//	public void setConfigureRedisAction(ConfigureRedisAction configureRedisAction) {
+//		this.configureRedisAction = configureRedisAction;
+//	}
 
 	@Autowired
 	public void setRedisConnectionFactory(
@@ -312,38 +312,38 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 	 * example, the mapping of the Session to WebSocket connections may not get cleaned
 	 * up.
 	 */
-	static class EnableRedisKeyspaceNotificationsInitializer implements InitializingBean {
-
-		private final RedisConnectionFactory connectionFactory;
-
-		private ConfigureRedisAction configure;
-
-		EnableRedisKeyspaceNotificationsInitializer(RedisConnectionFactory connectionFactory,
-				ConfigureRedisAction configure) {
-			this.connectionFactory = connectionFactory;
-			this.configure = configure;
-		}
-
-		@Override
-		public void afterPropertiesSet() {
-			if (this.configure == ConfigureRedisAction.NO_OP) {
-				return;
-			}
-			RedisConnection connection = this.connectionFactory.getConnection();
-			try {
-				this.configure.configure(connection);
-			}
-			finally {
-				try {
-					connection.close();
-				}
-				catch (Exception ex) {
-					LogFactory.getLog(getClass()).error("Error closing RedisConnection", ex);
-				}
-			}
-		}
-
-	}
+//	static class EnableRedisKeyspaceNotificationsInitializer implements InitializingBean {
+//
+//		private final RedisConnectionFactory connectionFactory;
+//
+//		private ConfigureRedisAction configure;
+//
+//		EnableRedisKeyspaceNotificationsInitializer(RedisConnectionFactory connectionFactory,
+//				ConfigureRedisAction configure) {
+//			this.connectionFactory = connectionFactory;
+//			this.configure = configure;
+//		}
+//
+//		@Override
+//		public void afterPropertiesSet() {
+//			if (this.configure == ConfigureRedisAction.NO_OP) {
+//				return;
+//			}
+//			RedisConnection connection = this.connectionFactory.getConnection();
+//			try {
+//				this.configure.configure(connection);
+//			}
+//			finally {
+//				try {
+//					connection.close();
+//				}
+//				catch (Exception ex) {
+//					LogFactory.getLog(getClass()).error("Error closing RedisConnection", ex);
+//				}
+//			}
+//		}
+//
+//	}
 
 	/**
 	 * Configuration of scheduled job for cleaning up expired sessions.

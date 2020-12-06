@@ -65,7 +65,7 @@ public class RedisWebSessionConfiguration extends SpringWebSessionConfiguration
 
 	private Integer maxInactiveIntervalInSeconds = MapSession.DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS;
 
-	private String redisNamespace = ReactiveRedisSessionRepository.DEFAULT_NAMESPACE;
+	private String redisNamespace = "spring:session";//ReactiveRedisSessionRepository.DEFAULT_NAMESPACE;
 
 	private SaveMode saveMode = SaveMode.ON_SET_ATTRIBUTE;
 
