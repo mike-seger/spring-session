@@ -290,7 +290,7 @@ public class RedisIndexedSessionRepository
 
 	private final RedisOperations<Object, Object> sessionRedisOperations;
 
-	private final RedisSessionExpirationPolicy expirationPolicy;
+//	private final RedisSessionExpirationPolicy expirationPolicy;
 
 	private ApplicationEventPublisher eventPublisher = (event) -> {
 	};
@@ -317,8 +317,6 @@ public class RedisIndexedSessionRepository
 	public RedisIndexedSessionRepository(RedisOperations<Object, Object> sessionRedisOperations) {
 		Assert.notNull(sessionRedisOperations, "sessionRedisOperations cannot be null");
 		this.sessionRedisOperations = sessionRedisOperations;
-		this.expirationPolicy = new RedisSessionExpirationPolicy(sessionRedisOperations, this::getExpirationsKey,
-				this::getSessionKey);
 		configureSessionChannels();
 	}
 
@@ -421,7 +419,7 @@ public class RedisIndexedSessionRepository
 	}
 
 	public void cleanupExpiredSessions() {
-		this.expirationPolicy.cleanExpiredSessions();
+		//this.expirationPolicy.cleanExpiredSessions();
 	}
 
 	@Override
@@ -495,7 +493,7 @@ public class RedisIndexedSessionRepository
 		}
 
 		cleanupPrincipalIndex(session);
-		this.expirationPolicy.onDelete(session);
+		//this.expirationPolicy.onDelete(session);
 
 		String expireKey = getExpiredKey(session.getId());
 		this.sessionRedisOperations.delete(expireKey);
@@ -832,7 +830,7 @@ public class RedisIndexedSessionRepository
 
 			Long originalExpiration = (this.originalLastAccessTime != null)
 					? this.originalLastAccessTime.plus(getMaxInactiveInterval()).toEpochMilli() : null;
-			RedisIndexedSessionRepository.this.expirationPolicy.onExpirationUpdated(originalExpiration, this);
+			//RedisIndexedSessionRepository.this.expirationPolicy.onExpirationUpdated(originalExpiration, this);
 		}
 
 		private void saveChangeSessionId() {

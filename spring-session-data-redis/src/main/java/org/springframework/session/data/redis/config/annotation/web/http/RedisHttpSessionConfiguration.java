@@ -54,7 +54,6 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.session.*;
 import org.springframework.session.config.SessionRepositoryCustomizer;
 import org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration;
-import org.springframework.session.data.redis.RedisFlushMode;
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
 import org.springframework.session.data.redis.config.ConfigureNotifyKeyspaceEventsAction;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
@@ -173,11 +172,11 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 		this.redisNamespace = namespace;
 	}
 
-	@Deprecated
-	public void setRedisFlushMode(RedisFlushMode redisFlushMode) {
-		Assert.notNull(redisFlushMode, "redisFlushMode cannot be null");
-		setFlushMode(redisFlushMode.getFlushMode());
-	}
+//	@Deprecated
+//	public void setRedisFlushMode(RedisFlushMode redisFlushMode) {
+//		Assert.notNull(redisFlushMode, "redisFlushMode cannot be null");
+//		setFlushMode(redisFlushMode.getFlushMode());
+//	}
 
 	public void setFlushMode(FlushMode flushMode) {
 		Assert.notNull(flushMode, "flushMode cannot be null");
@@ -269,10 +268,10 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 			this.redisNamespace = this.embeddedValueResolver.resolveStringValue(redisNamespaceValue);
 		}
 		FlushMode flushMode = attributes.getEnum("flushMode");
-		RedisFlushMode redisFlushMode = attributes.getEnum("redisFlushMode");
-		if (flushMode == FlushMode.ON_SAVE && redisFlushMode != RedisFlushMode.ON_SAVE) {
-			flushMode = redisFlushMode.getFlushMode();
-		}
+//		RedisFlushMode redisFlushMode = attributes.getEnum("redisFlushMode");
+//		if (flushMode == FlushMode.ON_SAVE && redisFlushMode != RedisFlushMode.ON_SAVE) {
+//			flushMode = redisFlushMode.getFlushMode();
+//		}
 		this.flushMode = flushMode;
 		this.saveMode = attributes.getEnum("saveMode");
 		String cleanupCron = attributes.getString("cleanupCron");

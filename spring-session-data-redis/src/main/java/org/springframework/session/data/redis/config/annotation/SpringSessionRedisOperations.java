@@ -24,16 +24,12 @@ import java.lang.annotation.Target;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.session.data.redis.ReactiveRedisSessionRepository;
-import org.springframework.session.data.redis.RedisIndexedSessionRepository;
-import org.springframework.session.data.redis.RedisSessionRepository;
 
 /**
  * Annotation used to inject the Redis accessor used by Spring Session's Redis session
  * repository.
  *
  * @author Vedran Pavic
- * @see RedisIndexedSessionRepository#getSessionRedisOperations()
- * @see RedisSessionRepository#getSessionRedisOperations()
  * @see ReactiveRedisSessionRepository#getSessionRedisOperations()
  * @since 2.0.0
  */

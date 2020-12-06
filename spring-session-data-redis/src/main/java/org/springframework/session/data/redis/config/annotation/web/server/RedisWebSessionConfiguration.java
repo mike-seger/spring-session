@@ -44,7 +44,6 @@ import org.springframework.session.SaveMode;
 import org.springframework.session.config.ReactiveSessionRepositoryCustomizer;
 import org.springframework.session.config.annotation.web.server.SpringWebSessionConfiguration;
 import org.springframework.session.data.redis.ReactiveRedisSessionRepository;
-import org.springframework.session.data.redis.RedisFlushMode;
 import org.springframework.session.data.redis.config.annotation.SpringSessionRedisConnectionFactory;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
