@@ -16,15 +16,7 @@
 
 package org.springframework.session.data.redis.config.annotation.web.server;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,23 +24,17 @@ import org.springframework.context.annotation.ImportAware;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
-import org.springframework.data.redis.core.ReactiveRedisTemplate;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.MapSession;
-import org.springframework.session.MapSessionRepository;
 import org.springframework.session.ReactiveMapSessionRepository;
 import org.springframework.session.SaveMode;
-import org.springframework.session.config.ReactiveSessionRepositoryCustomizer;
 import org.springframework.session.config.annotation.web.server.SpringWebSessionConfiguration;
-import org.springframework.session.data.redis.ReactiveRedisSessionRepository;
-//import org.springframework.session.data.redis.config.annotation.SpringSessionRedisConnectionFactory;
-//import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
 import org.springframework.web.server.session.WebSessionManager;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Exposes the {@link WebSessionManager} as a bean named {@code webSessionManager}. In
@@ -73,7 +59,7 @@ public class RedisWebSessionConfiguration extends SpringWebSessionConfiguration
 
 	private RedisSerializer<Object> defaultRedisSerializer;
 
-	private List<ReactiveSessionRepositoryCustomizer<ReactiveRedisSessionRepository>> sessionRepositoryCustomizers;
+	//private List<ReactiveSessionRepositoryCustomizer<ReactiveRedisSessionRepository>> sessionRepositoryCustomizers;
 
 	private ClassLoader classLoader;
 

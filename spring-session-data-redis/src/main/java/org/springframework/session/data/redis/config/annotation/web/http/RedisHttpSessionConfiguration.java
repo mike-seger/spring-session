@@ -83,7 +83,7 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 
 	private Integer maxInactiveIntervalInSeconds = MapSession.DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS;
 
-	private String redisNamespace = RedisIndexedSessionRepository.DEFAULT_NAMESPACE;
+	private String redisNamespace = "spring:session";//RedisIndexedSessionRepository.DEFAULT_NAMESPACE;
 
 	private FlushMode flushMode = FlushMode.ON_SAVE;
 
@@ -105,7 +105,7 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 
 	private Executor redisSubscriptionExecutor;
 
-	private List<SessionRepositoryCustomizer<RedisIndexedSessionRepository>> sessionRepositoryCustomizers;
+	//private List<SessionRepositoryCustomizer<RedisIndexedSessionRepository>> sessionRepositoryCustomizers;
 
 	private ClassLoader classLoader;
 
@@ -240,11 +240,11 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 		this.redisSubscriptionExecutor = redisSubscriptionExecutor;
 	}
 
-	@Autowired(required = false)
-	public void setSessionRepositoryCustomizer(
-			ObjectProvider<SessionRepositoryCustomizer<RedisIndexedSessionRepository>> sessionRepositoryCustomizers) {
-		this.sessionRepositoryCustomizers = sessionRepositoryCustomizers.orderedStream().collect(Collectors.toList());
-	}
+//	@Autowired(required = false)
+//	public void setSessionRepositoryCustomizer(
+//			ObjectProvider<SessionRepositoryCustomizer<RedisIndexedSessionRepository>> sessionRepositoryCustomizers) {
+//		this.sessionRepositoryCustomizers = sessionRepositoryCustomizers.orderedStream().collect(Collectors.toList());
+//	}
 
 	@Override
 	public void setBeanClassLoader(ClassLoader classLoader) {
@@ -302,7 +302,7 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 				&& this.redisConnectionFactory instanceof JedisConnectionFactory) {
 			return ((JedisConnectionFactory) this.redisConnectionFactory).getDatabase();
 		}
-		return RedisIndexedSessionRepository.DEFAULT_DATABASE;
+		return 0;
 	}
 
 	/**
@@ -348,22 +348,22 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 	/**
 	 * Configuration of scheduled job for cleaning up expired sessions.
 	 */
-	@EnableScheduling
-	@Configuration(proxyBeanMethods = false)
-	class SessionCleanupConfiguration implements SchedulingConfigurer {
-
-		private final RedisIndexedSessionRepository sessionRepository;
-
-		SessionCleanupConfiguration(RedisIndexedSessionRepository sessionRepository) {
-			this.sessionRepository = sessionRepository;
-		}
-
-		@Override
-		public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-			taskRegistrar.addCronTask(this.sessionRepository::cleanupExpiredSessions,
-					RedisHttpSessionConfiguration.this.cleanupCron);
-		}
-
-	}
+//	@EnableScheduling
+//	@Configuration(proxyBeanMethods = false)
+//	class SessionCleanupConfiguration implements SchedulingConfigurer {
+//
+//		private final RedisIndexedSessionRepository sessionRepository;
+//
+//		SessionCleanupConfiguration(RedisIndexedSessionRepository sessionRepository) {
+//			this.sessionRepository = sessionRepository;
+//		}
+//
+//		@Override
+//		public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+//			taskRegistrar.addCronTask(this.sessionRepository::cleanupExpiredSessions,
+//					RedisHttpSessionConfiguration.this.cleanupCron);
+//		}
+//
+//	}
 
 }

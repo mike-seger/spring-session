@@ -53,6 +53,8 @@ import org.springframework.session.events.SessionExpiredEvent;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 import org.springframework.util.Assert;
 
+import static org.springframework.session.FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME;
+
 /**
  * <p>
  * A {@link org.springframework.session.SessionRepository} that is implemented using
@@ -249,7 +251,7 @@ import org.springframework.util.Assert;
  * @since 2.2.0
  */
 public class RedisIndexedSessionRepository
-		implements FindByIndexNameSessionRepository<RedisIndexedSessionRepository.RedisSession>, MessageListener {
+		/*implements FindByIndexNameSessionRepository<RedisIndexedSessionRepository.RedisSession>, MessageListener*/ {
 
 	private static final Log logger = LogFactory.getLog(RedisIndexedSessionRepository.class);
 
@@ -408,7 +410,7 @@ public class RedisIndexedSessionRepository
 		return this.sessionRedisOperations;
 	}
 
-	@Override
+	//@Override
 	public void save(RedisSession session) {
 		session.save();
 		if (session.isNew) {
@@ -422,12 +424,12 @@ public class RedisIndexedSessionRepository
 		//this.expirationPolicy.cleanExpiredSessions();
 	}
 
-	@Override
+	//@Override
 	public RedisSession findById(String id) {
 		return getSession(id, false);
 	}
 
-	@Override
+	//@Override
 	public Map<String, RedisSession> findByIndexNameAndIndexValue(String indexName, String indexValue) {
 		if (!PRINCIPAL_NAME_INDEX_NAME.equals(indexName)) {
 			return Collections.emptyMap();
@@ -485,7 +487,7 @@ public class RedisIndexedSessionRepository
 		return loaded;
 	}
 
-	@Override
+	//@Override
 	public void deleteById(String sessionId) {
 		RedisSession session = getSession(sessionId, true);
 		if (session == null) {
@@ -502,7 +504,7 @@ public class RedisIndexedSessionRepository
 		save(session);
 	}
 
-	@Override
+	//@Override
 	public RedisSession createSession() {
 		MapSession cached = new MapSession();
 		if (this.defaultMaxInactiveInterval != null) {
@@ -513,7 +515,7 @@ public class RedisIndexedSessionRepository
 		return session;
 	}
 
-	@Override
+	//@Override
 	public void onMessage(Message message, byte[] pattern) {
 		byte[] messageChannel = message.getChannel();
 
@@ -608,7 +610,7 @@ public class RedisIndexedSessionRepository
 	}
 
 	String getPrincipalKey(String principalName) {
-		return this.namespace + "index:" + FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME + ":"
+		return this.namespace + "index:" + PRINCIPAL_NAME_INDEX_NAME + ":"
 				+ principalName;
 	}
 
@@ -808,7 +810,7 @@ public class RedisIndexedSessionRepository
 			String sessionId = getId();
 			getSessionBoundHashOperations(sessionId).putAll(this.delta);
 			String principalSessionKey = getSessionAttrNameKey(
-					FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME);
+					PRINCIPAL_NAME_INDEX_NAME);
 			String securityPrincipalSessionKey = getSessionAttrNameKey(SPRING_SECURITY_CONTEXT);
 			if (this.delta.containsKey(principalSessionKey) || this.delta.containsKey(securityPrincipalSessionKey)) {
 				if (this.originalPrincipalName != null) {

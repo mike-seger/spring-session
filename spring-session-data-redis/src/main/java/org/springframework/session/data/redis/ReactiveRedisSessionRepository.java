@@ -40,7 +40,7 @@ import org.springframework.util.Assert;
  * @since 2.2.0
  */
 public class ReactiveRedisSessionRepository
-		implements ReactiveSessionRepository<ReactiveRedisSessionRepository.RedisSession> {
+		/*implements ReactiveSessionRepository<ReactiveRedisSessionRepository.RedisSession>*/ {
 
 	/**
 	 * The default namespace for each key and channel in Redis used by Spring Session.
@@ -63,7 +63,6 @@ public class ReactiveRedisSessionRepository
 	private SaveMode saveMode = SaveMode.ON_SET_ATTRIBUTE;
 
 	/**
-	 * Create a new {@link ReactiveRedisSessionRepository} instance.
 	 * @param sessionRedisOperations the {@link ReactiveRedisOperations} to use for
 	 * managing sessions
 	 */
@@ -105,7 +104,7 @@ public class ReactiveRedisSessionRepository
 		return this.sessionRedisOperations;
 	}
 
-	@Override
+	//@Override
 	public Mono<RedisSession> createSession() {
 		return Mono.defer(() -> {
 			MapSession cached = new MapSession();
@@ -117,7 +116,7 @@ public class ReactiveRedisSessionRepository
 		});
 	}
 
-	@Override
+	//@Override
 	public Mono<Void> save(RedisSession session) {
 		if (session.isNew) {
 			return session.save();
@@ -127,7 +126,7 @@ public class ReactiveRedisSessionRepository
 				(exists) -> exists ? session.save() : Mono.error(new IllegalStateException("Session was invalidated")));
 	}
 
-	@Override
+	//@Override
 	public Mono<RedisSession> findById(String id) {
 		String sessionKey = getSessionKey(id);
 
@@ -142,7 +141,7 @@ public class ReactiveRedisSessionRepository
 		// @formatter:on
 	}
 
-	@Override
+	//@Override
 	public Mono<Void> deleteById(String id) {
 		String sessionKey = getSessionKey(id);
 

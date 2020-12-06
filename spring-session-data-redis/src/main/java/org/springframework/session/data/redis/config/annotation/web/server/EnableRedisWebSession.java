@@ -16,22 +16,15 @@
 
 package org.springframework.session.data.redis.config.annotation.web.server;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.session.MapSession;
-import org.springframework.session.ReactiveSessionRepository;
 import org.springframework.session.SaveMode;
-import org.springframework.session.Session;
 import org.springframework.session.config.annotation.web.server.EnableSpringWebSession;
-import org.springframework.session.data.redis.ReactiveRedisSessionRepository;
 import org.springframework.web.server.session.WebSessionManager;
+
+import java.lang.annotation.*;
 
 /**
  * Add this annotation to an {@code @Configuration} class to expose the
@@ -82,7 +75,7 @@ public @interface EnableRedisWebSession {
 	 * the applications and they could function within the same Redis instance.
 	 * @return the unique namespace for keys
 	 */
-	String redisNamespace() default ReactiveRedisSessionRepository.DEFAULT_NAMESPACE;
+	String redisNamespace() default "spring:session";//ReactiveRedisSessionRepository.DEFAULT_NAMESPACE;
 
 
 	/**

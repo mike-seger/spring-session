@@ -84,7 +84,7 @@ public @interface EnableRedisHttpSession {
 	 * the applications and they could function within the same Redis instance.
 	 * @return the unique namespace for keys
 	 */
-	String redisNamespace() default RedisIndexedSessionRepository.DEFAULT_NAMESPACE;
+	String redisNamespace() default "spring:session";//RedisIndexedSessionRepository.DEFAULT_NAMESPACE;
 
 	/**
 	 * Flush mode for the Redis sessions. The default is {@code ON_SAVE} which only
