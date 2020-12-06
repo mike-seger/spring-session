@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportAware;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.session.MapSession;
 import org.springframework.session.ReactiveMapSessionRepository;
 import org.springframework.session.SaveMode;
@@ -28,10 +26,6 @@ public class RedisWebSessionConfiguration extends SpringWebSessionConfiguration
 	private String redisNamespace = "spring:session";
 
 	private SaveMode saveMode = SaveMode.ON_SET_ATTRIBUTE;
-
-	private ReactiveRedisConnectionFactory redisConnectionFactory;
-
-	private RedisSerializer<Object> defaultRedisSerializer;
 
 	private ClassLoader classLoader;
 
