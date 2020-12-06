@@ -57,7 +57,7 @@ import org.springframework.session.config.annotation.web.http.SpringHttpSessionC
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
 import org.springframework.session.data.redis.config.ConfigureNotifyKeyspaceEventsAction;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
-import org.springframework.session.data.redis.config.annotation.SpringSessionRedisConnectionFactory;
+//import org.springframework.session.data.redis.config.annotation.SpringSessionRedisConnectionFactory;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
@@ -203,13 +203,13 @@ public class RedisHttpSessionConfiguration extends SpringHttpSessionConfiguratio
 
 	@Autowired
 	public void setRedisConnectionFactory(
-			@SpringSessionRedisConnectionFactory ObjectProvider<RedisConnectionFactory> springSessionRedisConnectionFactory,
+			/*@SpringSessionRedisConnectionFactory ObjectProvider<RedisConnectionFactory> springSessionRedisConnectionFactory,*/
 			ObjectProvider<RedisConnectionFactory> redisConnectionFactory) {
-		RedisConnectionFactory redisConnectionFactoryToUse = springSessionRedisConnectionFactory.getIfAvailable();
-		if (redisConnectionFactoryToUse == null) {
-			redisConnectionFactoryToUse = redisConnectionFactory.getObject();
-		}
-		this.redisConnectionFactory = redisConnectionFactoryToUse;
+//		RedisConnectionFactory redisConnectionFactoryToUse = springSessionRedisConnectionFactory.getIfAvailable();
+//		if (redisConnectionFactoryToUse == null) {
+//			redisConnectionFactoryToUse = redisConnectionFactory.getObject();
+//		}
+//		this.redisConnectionFactory = redisConnectionFactoryToUse;
 	}
 
 	@Autowired(required = false)
